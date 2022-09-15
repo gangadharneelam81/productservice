@@ -2,6 +2,8 @@ package com.productservice.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,8 +12,9 @@ import javax.persistence.Table;
 public class Product {
 	
 	@Id
-	@Column(name="product_id")
-	private String productId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 	
 	@Column(name="product_name")
 	private String productName;
@@ -19,12 +22,16 @@ public class Product {
 	@Column(name="price")
 	private double price;
 	
-	public String getProductId() {
-		return productId;
+	@Column(name="quantity")
+	private int quantity;
+	
+
+	public int getId() {
+		return id;
 	}
 
-	public void setProductId(String productId) {
-		this.productId = productId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getProductName() {
@@ -41,6 +48,14 @@ public class Product {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 }
